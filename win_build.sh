@@ -23,6 +23,8 @@ pip install -r requirements.txt
 # build executables
 pyinstaller pyinstaller/dc_tools.spec
 
+ls -l build
+ls -l dist
 ls -l dist/dc_tools
 
 # build the installers
