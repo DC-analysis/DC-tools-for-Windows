@@ -27,3 +27,6 @@ jobs:
     - name: Build windows executables
       shell: bash
       run: ./win_build.sh
+    - name: Test windows executables
+      shell: bash
+      run: ./win_test.sh
