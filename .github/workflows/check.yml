@@ -1,0 +1,29 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10"]  # PYTHON VERSION
+        os: [windows-latest]
+    timeout-minutes: 30
+    steps:
+    - name: Set env
+      shell: bash
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Build windows executables
+      shell: bash
+      run: win_build.sh
