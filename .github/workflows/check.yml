@@ -26,4 +26,4 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Build windows executables
       shell: bash
-      run: win_build.sh
+      run: ./win_build.sh
