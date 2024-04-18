@@ -21,7 +21,7 @@ python3 -m pip install msvc-runtime
 pip install -r requirements.txt
 
 # build executables
-python3 -m pyinstaller pyinstaller/dc_tools.spec
+pyinstaller pyinstaller/dc_tools.spec
 
 # build the installers
 iss innosetup/dc_tools.iss

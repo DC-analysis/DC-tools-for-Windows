@@ -11,6 +11,7 @@ This script performs the following steps:
 """
 import importlib
 import pathlib
+from pprint import pprint
 import subprocess as sp
 import sys
 import time
@@ -18,24 +19,48 @@ import time
 here = pathlib.Path(__file__).parent
 
 
+def get_import_name(pkg):
+    if pkg == "scikit-image":
+        return "skimage"
+    return pkg.split("[")[0]
+
+
 def get_packages():
     """read packages from requirements.txt"""
     data = (here / 'requirements.txt').read_text().split('\n')
-    packages = [ll.split("=")[0].strip() for ll in data if ll.strip()]
-    return packages
+    packages = []
+    packages_pinned = []
+    for line in data:
+        pkg = line.split("==")[0].strip()
+        if line.count("# no-upgrade"):
+            packages_pinned.append(line.split("#")[0].strip())
+        elif line.strip():
+            packages.append(pkg)
+    return packages, packages_pinned
 
 
-def get_package_versions(packages):
+def get_package_versions(packages, packages_pinned):
     """get versions of packages currently installed"""
     version_dict = {}
     for pkg in packages:
-        mod = importlib.import_module(pkg)
+        mod = importlib.import_module(get_import_name(pkg))
         version_dict[pkg] = mod.__version__
+    for pkgv in packages_pinned:
+        pk, ver = pkgv.split("==")
+        pmod = importlib.import_module(get_import_name(pk))
+        pver = pmod.__version__
+        if pver != ver:
+            raise ValueError(
+                f"Package {pk} should be {ver}, but is {pver}")
+        version_dict[pk] = f"{ver}  # no-upgrade"
     return version_dict
 
 
-def upgrade_packages(packages):
+def upgrade_packages(packages, packages_pinned):
     """upgrade all packages to latest version (resolving dependencies)"""
+    print("Installing pins", packages_pinned)
+    sp.check_output("pip install " + " ".join(packages_pinned), shell=True)
+    print("Upgrading", packages)
     sp.check_output("pip install --upgrade " + " ".join(packages), shell=True)
 
 
@@ -57,13 +82,15 @@ def write_changelog_entry(version_dict):
             # version data
             idat.append(line)
     else:
-        # the final version
-        versions[iver] = idat
+        if iver:
+            # the final version
+            versions[iver] = idat
     # add the latest version (replacing anything we did today)
     nver = time.strftime("%Y.%m.%d")
     ndat = [f"  - Python {write_python_version()}"]
     for key in sorted(version_dict.keys()):
-        ndat.append(f"  - {key} {version_dict[key]}")
+        pver = version_dict[key].split("#")[0].strip()
+        ndat.append(f"  - {key} {pver}")
     versions[nver] = ndat
     # write everything to CHANGELOG
     text = []
@@ -83,13 +110,15 @@ def write_package_pins(version_dict):
     """write package pins to requirements.txt"""
     text = []
     for pkg in version_dict:
-        text.append(pkg + "=" + version_dict[pkg])
+        text.append(pkg + "==" + version_dict[pkg])
     (here / 'requirements.txt').write_text("\n".join(text))
 
 
 if __name__ == "__main__":
-    packages = get_packages()
-    upgrade_packages(packages)
-    version_dict = get_package_versions(packages)
+    packages, packages_pinned = get_packages()
+    upgrade_packages(packages, packages_pinned)
+    version_dict = get_package_versions(packages, packages_pinned)
+    print("New versions:")
+    pprint(version_dict)
     write_package_pins(version_dict)
     write_changelog_entry(version_dict)
