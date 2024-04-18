@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Create Release
+    name: Run checks
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
