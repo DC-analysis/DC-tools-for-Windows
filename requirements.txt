@@ -1,4 +1,6 @@
-chipstream==0.2.1
-dclab==0.58.3
-dcnum==0.17.3
-dcoraid==0.14.0
+chipstream=0.2.2
+dclab=0.58.3
+dcnum=0.17.2
+dcoraid=0.13.3
+h5py=3.11.0
+numpy=1.26.4
