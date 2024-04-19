@@ -4,5 +4,5 @@ dcnum==0.17.2
 dcoraid==0.13.3
 h5py==3.11.0
 numpy==1.26.4
-scikit-image==0.23.0  # no-upgrade
+scikit-image==0.23.1  # no-upgrade
 scipy==1.11.4  # no-upgrade
