@@ -5,7 +5,7 @@ set -e
 set -x
 
 # Test whether we can print the version
-./dist/chipstream-cli --version
-./dist/dclab-compress --version
-./dist/dclab-verify-dataset --version
-./dist/dcoraid-upload-task --version
+./dist/DC-tools-for-Windows/chipstream-cli --version
+./dist/DC-tools-for-Windows/dclab-compress --version
+./dist/DC-tools-for-Windows/dclab-verify-dataset --version
+./dist/DC-tools-for-Windows/dcoraid-upload-task --version
