@@ -1,5 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+my_hidden_imports = [x for x in collect_submodules("skimage") if "tests" not in x]
+my_datas = collect_data_files("skimage")
 
 block_cipher = None
 
@@ -9,8 +11,8 @@ chipstream_a = Analysis(
     ['run-chipstream-cli.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=my_datas,
+    hiddenimports=my_hidden_imports,
     hookspath=[".", "pyinstaller"],
     hooksconfig={},
     runtime_hooks=[],
@@ -45,8 +47,8 @@ dclab_compress_a = Analysis(
     ['run-dclab-compress.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=my_datas,
+    hiddenimports=my_hidden_imports,
     hookspath=[".", "pyinstaller"],
     hooksconfig={},
     runtime_hooks=[],
@@ -81,8 +83,8 @@ dclab_verify_a = Analysis(
     ['run-dclab-verify-dataset.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=my_datas,
+    hiddenimports=my_hidden_imports,
     hookspath=[".", "pyinstaller"],
     hooksconfig={},
     runtime_hooks=[],
@@ -117,8 +119,8 @@ dcoraid_a = Analysis(
     ['run-dcoraid-upload-task.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=my_datas,
+    hiddenimports=my_hidden_imports,
     hookspath=[".", "pyinstaller"],
     hooksconfig={},
     runtime_hooks=[],
