@@ -30,7 +30,7 @@ jobs:
     - name: Release Assets
       uses: softprops/action-gh-release@v1
       with:
-        name: MPL-Data-Cast ${{ env.RELEASE_VERSION }}
+        name: DC tools for Windows ${{ env.RELEASE_VERSION }}
         draft: true
         prerelease: false
         body: |
