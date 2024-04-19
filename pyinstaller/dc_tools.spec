@@ -1,4 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules
+
 
 my_hidden_imports = [x for x in collect_submodules("skimage") if "tests" not in x]
 my_datas = collect_data_files("skimage")
