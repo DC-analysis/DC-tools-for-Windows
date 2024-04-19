@@ -36,4 +36,4 @@ jobs:
         body: |
             ![](https://img.shields.io/github/downloads/DC-Analysis/DC-tools-for-Windows/${{ env.RELEASE_VERSION }}/total.svg)
         files: |
-          ./Output/*.exe
+          ./innosetup/Output/*.exe
