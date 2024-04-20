@@ -12,6 +12,7 @@ This script performs the following steps:
 import importlib
 import pathlib
 from pprint import pprint
+import re
 import subprocess as sp
 import sys
 import time
@@ -101,8 +102,20 @@ def write_changelog_entry(version_dict):
 
 
 def write_python_version():
+    # passive version file
     pv = ".".join(f"{v}" for v in sys.version_info[:2])
     (here / "python_version.txt").write_text(pv)
+    # tagged with "# PYTHON VERSION" in github workflows
+    pvmatch = re.compile('.*"([0-9]\.[0-9]*)".*# PYTHON VERSION')
+    # github actions
+    for pp in (here / ".github" / "workflows").glob("*.yml"):
+        data = pp.read_text().split("\n")
+        for ii, line in enumerate(data):
+            for oldver in re.findall(pvmatch, line):
+                if oldver != pv:
+                    print(f"Updating Python {oldver} -> {pv} in {pp}")
+                    data[ii] = line.replace(oldver, pv)
+        pp.write_text("\n".join(data))
     return pv
 
 
