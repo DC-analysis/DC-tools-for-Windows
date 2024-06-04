@@ -1,7 +1,7 @@
-chipstream[CLI]==0.3.0
-dclab==0.58.7
-dcnum==0.19.1
-dcoraid==0.14.1
+chipstream[CLI]==0.5.0
+dclab==0.59.1
+dcnum==0.22.1
+dcoraid==0.14.2
 h5py==3.11.0
 numpy==1.26.4
 scikit-image==0.23.1  # no-upgrade
