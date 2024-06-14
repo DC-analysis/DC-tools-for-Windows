@@ -18,7 +18,7 @@ python3 -m pip install --upgrade pyinstaller
 python3 -m pip install msvc-runtime
 
 # Install CPU versions of torch (smaller file size)
-pip install torch==2.3.1+cpu torchvision-cpu==0.18.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==2.3.1+cpu torchvision==0.18.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
 
 # upgrade packages
 pip install -r requirements.txt
