@@ -45,11 +45,11 @@ def get_package_versions(packages, packages_pinned):
     version_dict = {}
     for pkg in packages:
         mod = importlib.import_module(get_import_name(pkg))
-        version_dict[pkg] = mod.__version__
+        version_dict[pkg] = mod.__version__.split("+")[0]
     for pkgv in packages_pinned:
         pk, ver = pkgv.split("==")
         pmod = importlib.import_module(get_import_name(pk))
-        pver = pmod.__version__
+        pver = pmod.__version__.split("+")[0]
         if pver != ver:
             raise ValueError(
                 f"Package {pk} should be {ver}, but is {pver}")
