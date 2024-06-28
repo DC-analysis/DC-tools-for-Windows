@@ -1,4 +1,4 @@
-chipstream[CLI]==0.5.0
+chipstream[CLI]==0.6.0
 dclab==0.60.1
 dcnum==0.24.0
 dcoraid==0.15.0
