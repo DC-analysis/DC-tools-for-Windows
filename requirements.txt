@@ -1,10 +1,10 @@
-chipstream[CLI]==0.6.1
-dclab==0.60.9
-dcnum==0.25.0
-dcoraid==0.15.0
-h5py==3.11.0
+chipstream[CLI]==0.6.2
+dclab==0.62.1
+dcnum==0.25.3
+dcoraid==0.15.2
+h5py==3.12.1
 numpy==1.26.4
-scikit-image==0.23.1  # no-upgrade
+scikit-image==0.24.0  # no-upgrade
 scipy==1.11.4  # no-upgrade
 torch==2.3.1  # no-upgrade
 torchvision==0.18.1  # no-upgrade
