@@ -25,7 +25,7 @@ certificate by `SignPath Foundation <https://signpath.org/>`_.
 
 Project Integrity
 -----------------
-To verify the integrity of the DC tools for Windows, we manage access this
+To verify the integrity of the DC tools for Windows, we manage access to this
 repository via GitHub Team roles:
 
 - **Triage**: The `Members team of DC-Analysis <https://github.com/orgs/DC-analysis/teams/triage>`_
