@@ -25,6 +25,3 @@ pip install -r requirements.txt
 
 # build executables
 pyinstaller pyinstaller/dc_tools.spec
-
-# build the installers
-ISCC.exe innosetup/dc_tools.iss
