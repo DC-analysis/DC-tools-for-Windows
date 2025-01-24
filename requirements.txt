@@ -4,6 +4,7 @@ dcnum==0.25.5
 dcoraid==0.16.8
 h5py==3.12.1
 numpy==1.26.4
+numba==0.60.0  # no-upgrade
 scikit-image==0.24.0  # no-upgrade
 scipy==1.11.4  # no-upgrade
 torch==2.3.1  # no-upgrade

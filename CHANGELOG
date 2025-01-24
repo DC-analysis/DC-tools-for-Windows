@@ -5,6 +5,7 @@
   - dcnum 0.25.5
   - dcoraid 0.16.8
   - h5py 3.12.1
+  - numba 0.60.0
   - numpy 1.26.4
   - scikit-image 0.24.0
   - scipy 1.11.4
