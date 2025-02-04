@@ -33,22 +33,22 @@ jobs:
       with:
         name: dctools-executables
         path: ./dist/DC-tools-for-Windows/*.exe
-#    - name: Remove unsigned windows binaries
-#      shell: bash
-#      run: |
-#        rm ./dist/DC-tools-for-Windows/*.exe
-#    - name: Sign Windows executable
-#      uses: signpath/github-action-submit-signing-request@v1
-#      with:
-#        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-#        organization-id: 'TODO'
-#        project-slug: 'DC-tools-for-Windows'
-#        signing-policy-slug: 'test-signing'
-#        github-artifact-id: '${{steps.uploadBinaryArtifact.outputs.artifact-id}}'
-#        wait-for-completion: true
-#        output-artifact-directory: 'dist/DC-tools-for-Windows'
-#        parameters: |
-#          Version: "${{ env.RELEASE_VERSION }}"
+    - name: Remove unsigned windows binaries
+      shell: bash
+      run: |
+        rm ./dist/DC-tools-for-Windows/*.exe
+    - name: Sign Windows executable
+      uses: signpath/github-action-submit-signing-request@v1
+      with:
+        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+        organization-id: '7a6567fe-80c6-4172-a51f-3e7d8004f7cd'
+        project-slug: 'DC-tools-for-Windows'
+        signing-policy-slug: 'test-signing'
+        github-artifact-id: '${{steps.uploadBinaryArtifact.outputs.artifact-id}}'
+        wait-for-completion: true
+        output-artifact-directory: 'dist/DC-tools-for-Windows'
+        parameters: |
+          Version: "${{ env.RELEASE_VERSION }}"
     - name: Create Windows installer
       shell: bash
       run: ./win_package.sh
@@ -58,22 +58,22 @@ jobs:
       with:
         name: dctools-installer
         path: ./innosetup/Output/*.exe
-#    - name: Remove unsigned windows installer
-#      shell: bash
-#      run: |
-#        rm -rf ./innosetup/Output/*.exe
-#    - name: Sign Windows installer
-#      uses: signpath/github-action-submit-signing-request@v1
-#      with:
-#        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-#        organization-id: 'TODO'
-#        project-slug: 'DC-tools-for-Windows'
-#        signing-policy-slug: 'test-signing'
-#        github-artifact-id: '${{steps.uploadBinaryArtifact.outputs.artifact-id}}'
-#        wait-for-completion: true
-#        output-artifact-directory: 'innosetup/Output'
-#        parameters: |
-#          Version: "${{ env.RELEASE_VERSION }}"
+    - name: Remove unsigned windows installer
+      shell: bash
+      run: |
+        rm -rf ./innosetup/Output/*.exe
+    - name: Sign Windows installer
+      uses: signpath/github-action-submit-signing-request@v1
+      with:
+        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+        organization-id: '7a6567fe-80c6-4172-a51f-3e7d8004f7cd'
+        project-slug: 'DC-tools-for-Windows'
+        signing-policy-slug: 'test-signing'
+        github-artifact-id: '${{steps.uploadBinaryArtifact.outputs.artifact-id}}'
+        wait-for-completion: true
+        output-artifact-directory: 'innosetup/Output'
+        parameters: |
+          Version: "${{ env.RELEASE_VERSION }}"
     - name: Release Assets
       uses: softprops/action-gh-release@v1
       with:
