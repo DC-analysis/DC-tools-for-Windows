@@ -69,7 +69,7 @@ jobs:
         organization-id: '7a6567fe-80c6-4172-a51f-3e7d8004f7cd'
         project-slug: 'DC-tools-for-Windows.git'
         signing-policy-slug: 'test-signing'
-        github-artifact-id: '${{steps.uploadBinaryArtifact.outputs.artifact-id}}'
+        github-artifact-id: '${{steps.uploadInstallerArtifact.outputs.artifact-id}}'
         wait-for-completion: true
         output-artifact-directory: 'innosetup/Output'
         parameters: |
