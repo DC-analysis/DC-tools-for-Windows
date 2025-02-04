@@ -1,7 +1,7 @@
-chipstream[CLI]==0.6.3
+chipstream[CLI]==0.6.4
 dclab==0.62.11
 dcnum==0.25.5
-dcoraid==0.16.8
+dcoraid==0.16.9
 h5py==3.12.1
 numpy==1.26.4
 numba==0.60.0  # no-upgrade

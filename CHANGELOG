@@ -1,3 +1,16 @@
+- 2025.02.04
+  - Python 3.12
+  - chipstream[CLI] 0.6.4
+  - dclab 0.62.11
+  - dcnum 0.25.5
+  - dcoraid 0.16.9
+  - h5py 3.12.1
+  - numba 0.60.0
+  - numpy 1.26.4
+  - scikit-image 0.24.0
+  - scipy 1.11.4
+  - torch 2.3.1
+  - torchvision 0.18.1
 - 2025.01.24
   - Python 3.11
   - chipstream[CLI] 0.6.3
