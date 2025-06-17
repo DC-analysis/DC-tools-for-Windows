@@ -14,6 +14,7 @@ jobs:
       matrix:
         python-version: ["3.12"]  # PYTHON VERSION
         os: [windows-latest]
+        hardware: ["cpu", "cuda"]
     timeout-minutes: 60
     steps:
     - name: Set env
@@ -24,6 +25,14 @@ jobs:
       uses: actions/setup-python@main
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install torch with CPU support
+      if: matrix.hardware == 'cpu'
+      run: |
+        pip install torch==2.3.1+cpu torchvision==0.18.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
+    - name: Install torch with CPU support
+      if: matrix.hardware == 'cuda'
+      run: |
+        pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
     - name: Build windows executables
       shell: bash
       run: ./win_build.sh
@@ -74,6 +83,14 @@ jobs:
         output-artifact-directory: 'innosetup/Output'
         parameters: |
           Version: "${{ env.RELEASE_VERSION }}"
+    - name: Add "_CUDA" to installer name
+      if: matrix.hardware == 'cuda'
+      run: |
+        $files = Get-ChildItem -Path .\innosetup\Output\ -Filter *.exe
+        foreach ($file in $files) {
+          Rename-Item -Path $file.FullName -NewName ($file.BaseName + "_CUDA" + $file.Extension)
+          Write-Host "Renamed $file.BaseName to $file.BaseName_CUDA$file.Extension"
+        }
     - name: Release Assets
       uses: softprops/action-gh-release@v1
       with:
