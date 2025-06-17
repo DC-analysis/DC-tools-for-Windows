@@ -18,6 +18,8 @@ python3 -m pip install --upgrade pyinstaller
 python3 -m pip install msvc-runtime
 
 # upgrade packages
+# Note that torch and torchvision are not in the requirements file,
+# because the CI or user has to install the correct versions (e.g. CUDA).
 pip install -r requirements.txt
 
 # build executables
