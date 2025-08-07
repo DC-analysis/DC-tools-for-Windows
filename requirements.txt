@@ -1,6 +1,6 @@
-chipstream[CLI]==0.7.0
-dclab==0.64.1
-dcnum==0.25.10
+chipstream[CLI]==0.8.0
+dclab==0.66.0
+dcnum==0.25.11
 dcoraid==1.16.11
 h5py==3.14.0
 numpy==1.26.4

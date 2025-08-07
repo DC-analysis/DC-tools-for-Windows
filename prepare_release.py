@@ -106,7 +106,7 @@ def write_python_version():
     pv = ".".join(f"{v}" for v in sys.version_info[:2])
     (here / "python_version.txt").write_text(pv)
     # tagged with "# PYTHON VERSION" in github workflows
-    pvmatch = re.compile('.*"([0-9]\.[0-9]*)".*# PYTHON VERSION')
+    pvmatch = re.compile(r'.*"([0-9]\.[0-9]*)".*# PYTHON VERSION')
     # github actions
     for pp in (here / ".github" / "workflows").glob("*.yml"):
         data = pp.read_text().split("\n")
