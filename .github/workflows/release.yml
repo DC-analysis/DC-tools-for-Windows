@@ -26,10 +26,13 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install torch with GPU support
       run: |
-        # For CPU torch, you would do
+        # Install torch with CUDA support. CUDA version limits supported GPUs.
+        # For CPU only:
         # pip install torch==2.9.1+cpu torchvision==0.24.1+cpu --index-url https://download.pytorch.org/whl/cpu
-        # Select torch >= 2.9 and CUDA 12.6 to reduce output file size
-        pip install "torch>=2.9" torchvision --index-url https://download.pytorch.org/whl/cu126
+        # For GPU:
+        # https://developer.nvidia.com/cuda/gpus
+        # https://en.wikipedia.org/wiki/CUDA#GPUs_supported
+        pip install "torch>=2.9" torchvision --index-url https://download.pytorch.org/whl/cu130
     - name: Build windows executables
       shell: bash
       run: ./win_build.sh
