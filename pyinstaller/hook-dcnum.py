@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 
 # Hook for MPL-Data-Cast
-from PyInstaller.utils.hooks import collect_data_files
+from PyInstaller.utils.hooks import collect_data_files  # noqa: F401
 
 hiddenimports = [
     "cv2",
@@ -22,7 +22,7 @@ hiddenimports = [
     "mahotas",
     "numba",
     "numpy",
-#    "openvino",
+    # "openvino",
     "scipy.ndimage",
     "torch",
 ]

@@ -10,7 +10,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # ------------------------------------------------------------------
 # Hook for dclab: https://pypi.python.org/pypi/dclab
-from PyInstaller.utils.hooks import collect_data_files
+from PyInstaller.utils.hooks import collect_data_files  # noqa: F401
 
 datas = collect_data_files('dclab')
 

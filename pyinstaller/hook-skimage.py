@@ -9,8 +9,8 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 # ------------------------------------------------------------------
-from PyInstaller.utils.hooks import collect_all
+from PyInstaller.utils.hooks import collect_all  # noqa: F401
 
 hiddenimports = ["skimage.filters.edges"]
 
-#datas = collect_all("skimage")
+# datas = collect_all("skimage")
