@@ -17,6 +17,9 @@ python3 -m pip install --upgrade pip wheel
 python3 -m pip install --upgrade pyinstaller
 python3 -m pip install msvc-runtime
 
+# python3 -m pip install openvino
+# python3 -m pip uninstall openvino_telemetry
+
 # upgrade packages
 # Note that torch and torchvision are not in the requirements file,
 # because the CI or user has to install the correct versions (e.g. CUDA).
